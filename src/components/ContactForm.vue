@@ -37,7 +37,7 @@
             <label for="phone">Điện thoại</label>
                 <Field
                     name="phone"
-                    type="tel"
+                    type="text"
                     class="form-control"
                     v-model="contactLocal.phone"
                 />
@@ -55,7 +55,7 @@
             </label>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary">Lưu</button>
+            <button class="btn btn-primary" type="submit">Lưu</button>
             <button
                 v-if="contactLocal._id"
                 type="button"
@@ -64,6 +64,8 @@
                 >
                 Xóa
             </button>
+                <router-link :to="{ name: 'contactbook' }"  class="ml-2 btn btn-info">  Thoát
+                </router-link>
         </div>
     </Form>
 
@@ -72,12 +74,14 @@
 <script>
     import * as yup from "yup";
     import { Form, Field, ErrorMessage } from "vee-validate";
+    import { RouterLink } from "vue-router";
     export default {
         components: {
-            Form,
-            Field,
-            ErrorMessage,
-        },
+                Form,
+                Field,
+                ErrorMessage,
+                RouterLink
+            },
         emits: ["submit:contact", "delete:contact"],
         props: {
             contact: { type: Object, required: true }

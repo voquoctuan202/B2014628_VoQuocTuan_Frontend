@@ -13,7 +13,7 @@
         <button class="btn btn-sm btn-primary" @click="refreshList()">
             <i class="fas fa-redo"></i> Làm mới
         </button>
-        <button class="btn btn-sm btn-success" @click="goToAddContact">
+        <button class="btn btn-sm btn-success" @click="goToAddContact()">
             <i class="fas fa-plus"></i> Thêm mới
         </button>
         <button
@@ -102,17 +102,22 @@
                 this.activeIndex = -1;
             },
             async removeAllContacts() {
+               // console.log("chạy remove all")
                 if (confirm("Bạn muốn xóa tất cả Liên hệ?")) {
                     try {
+                        
                         await ContactService.deleteAll();
+                        
                         this.refreshList();
                     } catch (error) {
+                        console.log("chạy remove all catch")
                         console.log(error);
                     }
                 }
             },
             goToAddContact() {
                 this.$router.push({ name: "contact.add" });
+                
             },
         },
         mounted() {

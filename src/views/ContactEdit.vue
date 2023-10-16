@@ -45,9 +45,12 @@
             },
             async updateContact(data) {
                 try {
+                    
                     await ContactService.update(this.contact._id, data);
                     this.message = "Liên hệ được cập nhật thành công.";
+                   
                 } catch (error) {
+                    console.log("chay update contact catch")
                     console.log(error);
             }
             },
