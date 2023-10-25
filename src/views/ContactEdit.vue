@@ -45,7 +45,7 @@
             },
             async updateContact(data) {
                 try {
-                    
+                    console.log(data)
                     await ContactService.update(this.contact._id, data);
                     this.message = "Liên hệ được cập nhật thành công.";
                    

@@ -16,36 +16,28 @@
     export default {
         components: {
             ContactForm,
-           
-        },
-        props: {
-            //id: { type: String, required: true },
         },
         data() {
             return {
-                contact: null,
+                contact: {},
                 message: "",
             };
         },
         methods: {
-
             async addContact(data) {
                 try {
-                
                     await ContactService.create(data);
-                    this.message = "Liên hệ thêm thành công.";
-                   
+                    this.message = "Liên hệ thêm thành công."; 
+                    console.log("chạy try ok", data);
                 } catch (error) {
-                    console.log("chay add contact catch")
+                    console.log("chạy catch");
                     console.log(error);
             }
             },
-            
         },
         created() {
-            this.contact = [];
+            
             this.message = "";
         },
-        
     };
 </script>
